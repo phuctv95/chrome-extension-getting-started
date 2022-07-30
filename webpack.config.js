@@ -6,15 +6,27 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 module.exports = {
     // Multiple entries.
     entry: {
-        background: './src/background.js',
+        background: './src/background.ts',
         popup: {
-            import: './src/popup/popup.js',
+            import: './src/popup/popup.ts',
             filename: 'popup/[name].js', // Customize the path in output folder.
         },
         options: {
-            import: './src/options/options.js',
+            import: './src/options/options.ts',
             filename: 'options/[name].js', // Customize the path in output folder.
         },
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

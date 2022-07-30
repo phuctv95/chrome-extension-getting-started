@@ -1,11 +1,11 @@
 document
     .querySelector('#changeColorBtn')
-    .addEventListener('click', async () => {
+    ?.addEventListener('click', async () => {
         let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
         chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            function: setPageBackgroundColor,
+            target: { tabId: tab.id! },
+            func: setPageBackgroundColor,
         });
     });
 

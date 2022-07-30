@@ -2,7 +2,7 @@ const presetButtonColors = ["#3aa757", "#e8453c", "#f9bb2d", "#4688f1"];
 const selectedClassName = "current";
 const containerDiv = document.querySelector("#containerDiv");
 
-function handleButtonClick(event) {
+function handleButtonClick(event: any) {
     const current = event.target.parentElement.querySelector(
         `.${selectedClassName}`
     );
@@ -15,7 +15,7 @@ function handleButtonClick(event) {
     chrome.storage.sync.set({ color });
 }
 
-function constructOptions(buttonColors) {
+function constructOptions(buttonColors: string[]) {
     chrome.storage.sync.get("color", (data) => {
         const currentColor = data.color;
         for (let buttonColor of buttonColors) {
@@ -28,7 +28,7 @@ function constructOptions(buttonColors) {
             }
 
             button.addEventListener("click", handleButtonClick);
-            containerDiv.appendChild(button);
+            containerDiv!.appendChild(button);
         }
     });
 }

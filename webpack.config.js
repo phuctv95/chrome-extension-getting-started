@@ -15,6 +15,10 @@ module.exports = {
             import: './src/options/options.ts',
             filename: 'options/[name].js', // Customize the path in output folder.
         },
+        'content-script': {
+            import: './src/content-script/content-script.ts',
+            filename: 'content-script/[name].js', // Customize the path in output folder.
+        },
     },
     module: {
         rules: [
